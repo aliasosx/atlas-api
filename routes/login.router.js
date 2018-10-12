@@ -8,4 +8,11 @@ router.post('/', function (req, res) {
         res.json(result);
     });
 });
+router.post('/token', function (req, res) {
+    //console.log(req.body.token);
+    authenticate.verifyToken(req.body.token, (result) => {
+        res.json(result);
+    });
+});
+
 module.exports = router;

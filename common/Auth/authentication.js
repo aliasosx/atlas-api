@@ -20,10 +20,9 @@ function loginByEmail(user, callback) {
         } else if (Object.keys(rows).length > 0) {
             console.log(rows);
             if (bcrypt.compareSync(user.password, rows[0].password)) {
-
                 callback({
                     status: "Success",
-                    token: tokenGen.sign(rows[0].user + rows[0].email)
+                    token: tokenGen.sign(rows[0].username + rows[0].email)
                 });
             } else {
                 callback({
@@ -33,6 +32,12 @@ function loginByEmail(user, callback) {
         }
     });
 }
+
+function verifyToken(token, callback) {
+    callback(tokenGen.verify(token));
+}
+
 module.exports = {
     loginByEmail,
+    verifyToken,
 }
