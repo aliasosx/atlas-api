@@ -10,6 +10,7 @@ function loginByEmail(user, callback) {
                 status: "Login Fail"
             });
         } else if (rows == null) {
+            console.log("rows null");
             callback({
                 status: "Login Fail"
             });
