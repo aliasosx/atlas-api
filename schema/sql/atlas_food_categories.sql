@@ -1,0 +1,2 @@
+INSERT INTO atlas.food_categories (id, food_type_name, created_at, updated_at, food_type_code) VALUES (1, 'food', '2018-10-07 02:03:52', '2018-10-07 02:03:52', 'food');
+INSERT INTO atlas.food_categories (id, food_type_name, created_at, updated_at, food_type_code) VALUES (2, 'drink', '2018-10-07 02:04:04', '2018-10-07 02:04:04', 'drink');

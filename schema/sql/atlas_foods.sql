@@ -1,0 +1,2 @@
+INSERT INTO atlas.foods (id, food_code, food_name, food_type_code, cost, price, currency_code, kitchen_code, updated_by, updated_at, created_at) VALUES (1, 'frc-001', 'fire rice poke', 'food', 10000, 15000, '418', 'kitchen001', 'admin', '2018-10-07 02:20:21', '2018-10-07 02:20:21');
+INSERT INTO atlas.foods (id, food_code, food_name, food_type_code, cost, price, currency_code, kitchen_code, updated_by, updated_at, created_at) VALUES (3, 'frc-002', 'fire rice Sea food', 'food', 10000, 15000, '418', 'kitchen001', 'admin', '2018-10-07 02:22:20', '2018-10-07 02:22:20');
