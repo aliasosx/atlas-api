@@ -23,7 +23,7 @@ function loginByEmail(user, callback) {
             if (bcrypt.compareSync(user.password, rows[0].password)) {
                 callback({
                     status: "Success",
-                    token: tokenGen.sign(rows[0].username + rows[0].email)
+                    token: tokenGen.sign(rows[0].username + "|" + rows[0].email)
                 });
             } else {
                 callback({

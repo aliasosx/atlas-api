@@ -7,7 +7,15 @@ function verifyToken(token) {
         return false;
     }
 }
+function decode(token){
+    if(tokenModule.verify(token)){
+        return tokenModule.decode(token);
+    } else {
+        return ;
+    }
+}
 
 module.exports = {
     verifyToken,
+    decode,
 }

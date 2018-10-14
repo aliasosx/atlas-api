@@ -1,5 +1,4 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var router = express.Router();
 var UserController = require('../controller/userController');
 var tokenVerification = require('../common/Auth/tokenCheck');
