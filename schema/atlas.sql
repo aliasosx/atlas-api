@@ -53,6 +53,35 @@ INSERT INTO `customers` (`id`, `id_card_no`, `gender`, `fullname`, `DateofBirth`
 UNLOCK TABLES;
 
 --
+-- Table structure for table `discounts`
+--
+
+DROP TABLE IF EXISTS `discounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `discounts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `food_id` int(11) NOT NULL,
+  `discount_percentage` float NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `discounts_id_uindex` (`id`),
+  UNIQUE KEY `discounts_food_id_uindex` (`food_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `discounts`
+--
+
+LOCK TABLES `discounts` WRITE;
+/*!40000 ALTER TABLE `discounts` DISABLE KEYS */;
+INSERT INTO `discounts` (`id`, `food_id`, `discount_percentage`, `created_at`, `updated_at`) VALUES (1,6,0.2,'2018-10-16 15:14:49','2018-10-16 15:14:49');
+/*!40000 ALTER TABLE `discounts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `food_types`
 --
 
@@ -96,12 +125,12 @@ CREATE TABLE `foods` (
   `price` double NOT NULL,
   `currcode` varchar(3) NOT NULL,
   `enabled` tinyint(1) DEFAULT 1,
-  `created_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `foods_id_uindex` (`id`),
   UNIQUE KEY `foods_food_name_uindex` (`food_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +139,7 @@ CREATE TABLE `foods` (
 
 LOCK TABLES `foods` WRITE;
 /*!40000 ALTER TABLE `foods` DISABLE KEYS */;
-INSERT INTO `foods` (`id`, `food_name`, `photo`, `food_type_id`, `cost`, `price`, `currcode`, `enabled`, `created_at`, `updated_at`) VALUES (6,'ຊາໄຂ່ມຸກ','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',2,8000,12000,'418',1,NULL,'2018-10-15 16:45:57'),(7,'ກະເພົາໄກ່','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',1,10000,15000,'418',1,NULL,'2018-10-15 16:46:25'),(9,'ຜັກກາດນາໝູກອບ','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',1,10000,15000,'418',1,NULL,'2018-10-15 16:46:39');
+INSERT INTO `foods` (`id`, `food_name`, `photo`, `food_type_id`, `cost`, `price`, `currcode`, `enabled`, `created_at`, `updated_at`) VALUES (6,'ຊາໄຂ່ມຸກ','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',2,8000,12000,'418',1,'2018-10-16 08:32:10','2018-10-15 16:45:57'),(7,'ກະເພົາໄກ່','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',1,10000,15000,'418',1,'2018-10-16 08:32:11','2018-10-15 16:46:25'),(9,'ຜັກກາດນາໝູກອບ','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',1,10000,15000,'418',1,'2018-10-16 08:32:12','2018-10-15 16:46:39'),(17,'Balopfee','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',2,8000,12000,'418',1,'2018-10-16 08:32:13','2018-10-16 13:55:05'),(19,'Coffee','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',2,8000,15000,'418',1,'2018-10-16 08:32:14','2018-10-16 15:31:37');
 /*!40000 ALTER TABLE `foods` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,6 +173,36 @@ INSERT INTO `menus` (`id`, `menu_name`, `menu_link`, `menu_icon`, `enabled`) VAL
 UNLOCK TABLES;
 
 --
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` varchar(20) NOT NULL,
+  `transaction_id` varchar(20) NOT NULL,
+  `order_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `customer_id` int(11) NOT NULL,
+  `recipt_printed` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `orders_id_uindex` (`id`),
+  UNIQUE KEY `orders_order_id_uindex` (`order_id`),
+  UNIQUE KEY `orders_transaction_id_uindex` (`transaction_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `roles`
 --
 
@@ -172,6 +231,40 @@ LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id`, `role_code`, `role_name`, `enabled`, `created_at`, `updated_at`) VALUES (1,'ADMIN','ADMINISTRATOR',1,'2018-10-07 01:37:02','2018-10-07 01:37:02'),(2,'GUEST','GUEST',1,'2018-10-07 01:37:13','2018-10-07 01:37:13'),(3,'CHEF','Chef',1,'2018-10-07 01:38:06','2018-10-07 01:38:06'),(5,'STAFF','STAFF',1,'2018-10-07 01:38:44','2018-10-07 01:38:44');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sales`
+--
+
+DROP TABLE IF EXISTS `sales`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sale_date` datetime DEFAULT current_timestamp(),
+  `food_id` int(11) NOT NULL,
+  `transaction_id` varchar(30) NOT NULL,
+  `quantity` double NOT NULL DEFAULT 0,
+  `price` double NOT NULL DEFAULT 0,
+  `total` double GENERATED ALWAYS AS (`quantity` * `price`) VIRTUAL,
+  `discount_percentage` float NOT NULL DEFAULT 0,
+  `discount` float GENERATED ALWAYS AS (`total` * `discount_percentage`) VIRTUAL,
+  `grand_total` double GENERATED ALWAYS AS (`total` - `discount`) VIRTUAL,
+  `user_id` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `sales_id_uindex` (`id`),
+  UNIQUE KEY `sales_transaction_id_uindex` (`transaction_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sales`
+--
+
+LOCK TABLES `sales` WRITE;
+/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -245,4 +338,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-15 16:52:27
+-- Dump completed on 2018-10-16 16:56:50
