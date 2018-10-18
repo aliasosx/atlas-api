@@ -14,5 +14,10 @@ router.post('/token', function (req, res) {
         res.json(result);
     });
 });
+router.post('/decode', function (req, res) {
+    authenticate.decodeToken(req.body.token, (result) => {
+        res.json(result);
+    });
+});
 
 module.exports = router;

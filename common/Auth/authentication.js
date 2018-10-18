@@ -38,7 +38,12 @@ function verifyToken(token, callback) {
     callback(tokenGen.verify(token));
 }
 
+function decodeToken(token, callback) {
+    callback(tokenGen.decode(token));
+}
+
 module.exports = {
     loginByEmail,
     verifyToken,
+    decodeToken,
 }
