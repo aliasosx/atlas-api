@@ -1,4 +1,0 @@
-INSERT INTO atlas.roles (id, role_code, role_name, enabled, created_at, updated_at) VALUES (1, 'ADMIN', 'ADMINISTRATOR', 1, '2018-10-07 01:37:02', '2018-10-07 01:37:02');
-INSERT INTO atlas.roles (id, role_code, role_name, enabled, created_at, updated_at) VALUES (2, 'GUEST', 'GUEST', 1, '2018-10-07 01:37:13', '2018-10-07 01:37:13');
-INSERT INTO atlas.roles (id, role_code, role_name, enabled, created_at, updated_at) VALUES (3, 'CHEF', 'Chef', 1, '2018-10-07 01:38:06', '2018-10-07 01:38:06');
-INSERT INTO atlas.roles (id, role_code, role_name, enabled, created_at, updated_at) VALUES (5, 'STAFF', 'STAFF', 1, '2018-10-07 01:38:44', '2018-10-07 01:38:44');

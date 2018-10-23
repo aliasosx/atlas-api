@@ -1,2 +1,0 @@
-INSERT INTO atlas.kitchens (id, kitchen_code, kitchen_name, responsibility_user) VALUES (3, 'kitchen001', 'Out Side kitchen', 'Chef-01');
-INSERT INTO atlas.kitchens (id, kitchen_code, kitchen_name, responsibility_user) VALUES (4, 'kitchen002', 'Inside Kitchen', 'Chef-02');

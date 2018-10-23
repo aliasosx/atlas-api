@@ -16,6 +16,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `company_infos`
+--
+
+DROP TABLE IF EXISTS `company_infos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `company_infos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `company_code` varchar(255) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
+  `company_name_la` varchar(255) NOT NULL,
+  `established_date` date DEFAULT curdate(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `company_infos_id_uindex` (`id`),
+  UNIQUE KEY `company_infos_company_name_uindex` (`company_name`),
+  UNIQUE KEY `company_infos_company_name_la_uindex` (`company_name_la`),
+  UNIQUE KEY `company_infos_company_code_uindex` (`company_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `company_infos`
+--
+
+LOCK TABLES `company_infos` WRITE;
+/*!40000 ALTER TABLE `company_infos` DISABLE KEYS */;
+INSERT INTO `company_infos` (`id`, `company_code`, `company_name`, `company_name_la`, `established_date`) VALUES (1,'LETTER-P','LETTER-P RESTAURANT ','LETTER-P RESTAURANT ','2018-10-22');
+/*!40000 ALTER TABLE `company_infos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `customers`
 --
 
@@ -338,4 +369,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-16 16:56:50
+-- Dump completed on 2018-10-23 13:39:00
