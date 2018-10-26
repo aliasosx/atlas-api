@@ -25,8 +25,16 @@ function updateFood(food, callback) {
     });
 }
 
+function getFoodsById(id, callback) {
+    let sql = "select * from foods where id=" + id;
+    db.CreateQueryStr(sql, function (err, rows) {
+        callback(err, rows);
+    });
+}
+
 module.exports = {
     getFoods,
     addFoods,
     updateFood,
+    getFoodsById,
 }

@@ -105,10 +105,32 @@ router.post('/customer/updateCustomer', function (req, res) {
 });
 
 /* Food module */
-router.get('/food', (req, res) => {
+router.get('/foods', (req, res) => {
     if (req.headers.authorization != null) {
         if (AuthCheck.tokenCheck(req.headers)) {
             foodController.getFoods(function (err, foods) {
+                if (!err) {
+                    res.json(foods);
+                } else {
+                    res.json(err);
+                }
+            });
+        } else {
+            res.json({
+                status: "Unauthorized"
+            })
+        }
+    } else {
+        res.json({
+            status: "Unauthorized"
+        })
+    }
+});
+
+router.get('/food/:id', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (AuthCheck.tokenCheck(req.headers)) {
+            foodController.getFoodsById(req.params.id, function (err, foods) {
                 if (!err) {
                     res.json(foods);
                 } else {
