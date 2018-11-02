@@ -6,6 +6,9 @@ var customerController = require('../controller/customerController');
 var foodController = require('../controller/foodController');
 var MenuController = require('../controller/menuController');
 var SaleController = require('../controller/saleController');
+var FoodTypeController = require('../controller/foodtypeController');
+var CurrencyCodeController = require('../controller/currencyCodeController');
+
 
 var tokenVerification = require('../common/Auth/tokenCheck');
 var header_req = require('../common/header');
@@ -24,6 +27,9 @@ router.get('/menus', function (req, res) {
         res.json('Unauthorized');
     }
 });
+
+
+
 
 router.get('/menus/usermenu', function (req, res) {
     if (req.headers.authorization != null) {
@@ -148,21 +154,29 @@ router.get('/food/:id', (req, res) => {
         })
     }
 });
-
+/* Add Food menu */
 router.post('/food/addFood', (req, res) => {
     if (req.headers.authorization != null) {
         if (AuthCheck.tokenCheck(req.headers)) {
-            foodController.addFoods(req.body.food, function (err, rows) {
-                if (!err) {
-                    res.json({
-                        status: "Operation success"
-                    })
-                } else {
-                    res.json({
-                        status: err
-                    })
-                }
-            });
+            console.log(req.body);
+            if (req.body.food) {
+                foodController.addFoods(req.body.food, function (err, rows) {
+
+                    if (!err) {
+                        res.json({
+                            status: "Operation success"
+                        })
+                    } else {
+                        res.json({
+                            status: err
+                        })
+                    }
+                });
+            } else {
+                res.json({
+                    status: "Data incorrect"
+                })
+            }
         } else {
             res.json({
                 status: "Unauthorized"
@@ -199,5 +213,48 @@ router.post('/food/updatefood', (req, res) => {
         })
     }
 });
+
+router.get('/foodtypes', function (req, res) {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            FoodTypeController.getFoodType(function (err, rows) {
+                res.json(rows);
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
+router.get('/currcodes', function (req, res) {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            CurrencyCodeController.getCurrencyCode(function (err, rows) {
+                res.json(rows);
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
+router.post('/food/remove', function (req, res) {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            foodController.removeFoodById(req.body.food, function (err, rows) {
+                res.json(rows);
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
 
 module.exports = router;
