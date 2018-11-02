@@ -47,6 +47,37 @@ INSERT INTO `company_infos` (`id`, `company_code`, `company_name`, `company_name
 UNLOCK TABLES;
 
 --
+-- Table structure for table `currency_code`
+--
+
+DROP TABLE IF EXISTS `currency_code`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `currency_code` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `curr_code` varchar(3) NOT NULL,
+  `curr_name` varchar(20) NOT NULL,
+  `sign` char(1) NOT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `curr_name_la` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `currency_code_id_uindex` (`id`),
+  UNIQUE KEY `currency_code_curr_name_uindex` (`curr_name`),
+  UNIQUE KEY `currency_code_curr_code_uindex` (`curr_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `currency_code`
+--
+
+LOCK TABLES `currency_code` WRITE;
+/*!40000 ALTER TABLE `currency_code` DISABLE KEYS */;
+INSERT INTO `currency_code` (`id`, `curr_code`, `curr_name`, `sign`, `country`, `curr_name_la`) VALUES (1,'418','LAK','₭','Laos','ກິບ'),(2,'840','USD','$','USA','ໂດລາ'),(4,'764','THB','฿','Thailand','ບາດ');
+/*!40000 ALTER TABLE `currency_code` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `customers`
 --
 
@@ -123,6 +154,7 @@ CREATE TABLE `food_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `food_type` varchar(4) NOT NULL,
   `food_type_desc` varchar(255) NOT NULL,
+  `food_type_desc_la` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `food_types_id_uindex` (`id`),
   UNIQUE KEY `food_types_food_type_uindex` (`food_type`),
@@ -136,7 +168,7 @@ CREATE TABLE `food_types` (
 
 LOCK TABLES `food_types` WRITE;
 /*!40000 ALTER TABLE `food_types` DISABLE KEYS */;
-INSERT INTO `food_types` (`id`, `food_type`, `food_type_desc`) VALUES (1,'FOOD','Food'),(2,'DRNK','DRINK');
+INSERT INTO `food_types` (`id`, `food_type`, `food_type_desc`, `food_type_desc_la`) VALUES (1,'FOOD','Food','ອາຫານ'),(2,'DRNK','DRINK','ເຄື່ອງດື່ມ');
 /*!40000 ALTER TABLE `food_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,10 +190,11 @@ CREATE TABLE `foods` (
   `enabled` tinyint(1) DEFAULT 1,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp(),
+  `created_by` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `foods_id_uindex` (`id`),
   UNIQUE KEY `foods_food_name_uindex` (`food_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +203,7 @@ CREATE TABLE `foods` (
 
 LOCK TABLES `foods` WRITE;
 /*!40000 ALTER TABLE `foods` DISABLE KEYS */;
-INSERT INTO `foods` (`id`, `food_name`, `photo`, `food_type_id`, `cost`, `price`, `currcode`, `enabled`, `created_at`, `updated_at`) VALUES (6,'ຊາໄຂ່ມຸກ','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',2,8000,12000,'418',1,'2018-10-16 08:32:10','2018-10-15 16:45:57'),(7,'ກະເພົາໄກ່','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',1,10000,15000,'418',1,'2018-10-16 08:32:11','2018-10-15 16:46:25'),(9,'ຜັກກາດນາໝູກອບ','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',1,10000,15000,'418',1,'2018-10-16 08:32:12','2018-10-15 16:46:39'),(17,'Balopfee','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',2,8000,12000,'418',1,'2018-10-16 08:32:13','2018-10-16 13:55:05'),(19,'Coffee','https://randomwire.com/wp-content/uploads/plastic-food.jpeg',2,8000,15000,'418',1,'2018-10-16 08:32:14','2018-10-16 15:31:37');
+INSERT INTO `foods` (`id`, `food_name`, `photo`, `food_type_id`, `cost`, `price`, `currcode`, `enabled`, `created_at`, `updated_at`, `created_by`) VALUES (6,'ຊາໄຂ່ມຸກ','https://www.studio7thailand.com/wp-content/uploads/2017/11/iPhone-X-01.png',2,8000,12000,'418',1,'2018-10-16 08:32:10','2018-10-15 16:45:57','ADMIN'),(7,'ກະເພົາໄກ່','https://www.studio7thailand.com/wp-content/uploads/2017/11/iPhone-X-01.png',1,10000,15000,'418',1,'2018-10-16 08:32:11','2018-10-15 16:46:25','ADMIN'),(9,'ຜັກກາດນາໝູກອບ','https://www.studio7thailand.com/wp-content/uploads/2017/11/iPhone-X-01.png',1,10000,15000,'418',1,'2018-10-16 08:32:12','2018-10-15 16:46:39','ADMIN'),(17,'Balopfee','https://www.studio7thailand.com/wp-content/uploads/2017/11/iPhone-X-01.png',2,8000,12000,'418',1,'2018-10-16 08:32:13','2018-10-16 13:55:05','ADMIN'),(19,'Coffee','https://www.studio7thailand.com/wp-content/uploads/2017/11/iPhone-X-01.png',2,8000,15000,'418',1,'2018-10-16 08:32:14','2018-10-16 15:31:37','ADMIN'),(21,'ເຂົ້າໄກ່ທອດ','https://www.studio7thailand.com/wp-content/uploads/2017/11/iPhone-X-01.png',1,10000,15000,'418',1,'2018-11-02 15:30:31','2018-11-02 15:30:31','undefined'),(34,'ໄຂ່ຈ່ຽວ','https://www.studio7thailand.com/wp-content/uploads/2017/11/iPhone-X-01.png',1,8000,10000,'418',1,'2018-11-02 16:33:54','2018-11-02 16:33:54','ADMIN');
 /*!40000 ALTER TABLE `foods` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +223,7 @@ CREATE TABLE `menus` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `menus_id_uindex` (`id`),
   UNIQUE KEY `menus_menu_name_uindex` (`menu_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +232,7 @@ CREATE TABLE `menus` (
 
 LOCK TABLES `menus` WRITE;
 /*!40000 ALTER TABLE `menus` DISABLE KEYS */;
-INSERT INTO `menus` (`id`, `menu_name`, `menu_link`, `menu_icon`, `enabled`) VALUES (1,'Home','/','menu',1),(2,'Sales','/sales','menu',1),(3,'Terminals','/terminals','menu',1);
+INSERT INTO `menus` (`id`, `menu_name`, `menu_link`, `menu_icon`, `enabled`) VALUES (1,'Home','/','home',1),(2,'Sales','/sale','shopping_cart',1),(3,'Terminals','/terminal','dns',1),(4,'POS','pos','credit_card',1),(5,'Food','food','fastfood',1),(6,'Reports','report','report',1);
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,7 +344,7 @@ CREATE TABLE `tranx_role_menu` (
   `menu_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tranx_role_menu_id_uindex` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,7 +353,7 @@ CREATE TABLE `tranx_role_menu` (
 
 LOCK TABLES `tranx_role_menu` WRITE;
 /*!40000 ALTER TABLE `tranx_role_menu` DISABLE KEYS */;
-INSERT INTO `tranx_role_menu` (`id`, `role_code`, `menu_id`) VALUES (1,'ADMIN',1),(4,'ADMIN',2),(5,'ADMIN',3);
+INSERT INTO `tranx_role_menu` (`id`, `role_code`, `menu_id`) VALUES (1,'ADMIN',1),(4,'ADMIN',2),(5,'ADMIN',3),(6,'ADMIN',4),(7,'ADMIN',5),(8,'ADMIN',6);
 /*!40000 ALTER TABLE `tranx_role_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -369,4 +402,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-23 13:39:00
+-- Dump completed on 2018-11-02 16:42:51
