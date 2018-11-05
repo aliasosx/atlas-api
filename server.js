@@ -1,7 +1,7 @@
 var app = require('./common/app');
 var userRouter = require('./routes/user.router');
 var loginRouter = require('./routes/login.router');
-var path = require('path');
+
 
 var routerAtlas = require('./routes/atlas.router');
 
