@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
+
 var UserController = require('../controller/userController');
 var CompanyController = require('../controller/companyController');
 var customerController = require('../controller/customerController');
@@ -9,6 +11,18 @@ var SaleController = require('../controller/saleController');
 var FoodTypeController = require('../controller/foodtypeController');
 var CurrencyCodeController = require('../controller/currencyCodeController');
 
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/images/uploads/foods')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+
+var upload = multer({
+    storage: storage
+});
 
 var tokenVerification = require('../common/Auth/tokenCheck');
 var header_req = require('../common/header');
@@ -254,6 +268,13 @@ router.post('/food/remove', function (req, res) {
     } else {
         res.json('Unauthorized');
     }
+});
+
+
+router.post('/food/upload', upload.single('image'), (req, res, next) => {
+    res.json({
+        'message': 'File uploaded successfully'
+    });
 });
 
 
