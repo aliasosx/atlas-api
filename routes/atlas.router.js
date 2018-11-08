@@ -269,8 +269,50 @@ router.post('/food/remove', function (req, res) {
         res.json('Unauthorized');
     }
 });
+/* foot Type */
 
+router.post('/foodtype', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            FoodTypeController.createFoodType( req.body.foodtype ,(err, rows) => {
+                res.json(rows);
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
 
+router.put('/foodtype', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            FoodTypeController.updateFoodType(req.body.foodtype ,(err, rows) => {
+                res.json(rows);
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+router.delete('/foodtype', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            FoodTypeController.deleteFoodType(req.body.foodtype ,(err, rows) => {
+                res.json(rows);
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
+/* upload file */
 router.post('/food/upload', upload.single('image'), (req, res, next) => {
     res.json({
         'message': 'File uploaded successfully'
