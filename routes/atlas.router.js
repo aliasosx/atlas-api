@@ -10,6 +10,7 @@ var MenuController = require('../controller/menuController');
 var SaleController = require('../controller/saleController');
 var FoodTypeController = require('../controller/foodtypeController');
 var CurrencyCodeController = require('../controller/currencyCodeController');
+var DiscountController = require('../controller/discountController');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -274,8 +275,17 @@ router.post('/food/remove', function (req, res) {
 router.post('/foodtype', (req, res) => {
     if (req.headers.authorization != null) {
         if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
-            FoodTypeController.createFoodType( req.body.foodtype ,(err, rows) => {
-                res.json(rows);
+            FoodTypeController.createFoodType(req.body.foodtype, (err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json({
+                        status: rows
+                    });
+                }
+
             });
         } else {
             res.json('Unauthorized');
@@ -288,7 +298,7 @@ router.post('/foodtype', (req, res) => {
 router.put('/foodtype', (req, res) => {
     if (req.headers.authorization != null) {
         if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
-            FoodTypeController.updateFoodType(req.body.foodtype ,(err, rows) => {
+            FoodTypeController.updateFoodType(req.body.foodtype, (err, rows) => {
                 res.json(rows);
             });
         } else {
@@ -298,10 +308,10 @@ router.put('/foodtype', (req, res) => {
         res.json('Unauthorized');
     }
 });
-router.delete('/foodtype', (req, res) => {
+router.delete('/foodtype/:id', (req, res) => {
     if (req.headers.authorization != null) {
         if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
-            FoodTypeController.deleteFoodType(req.body.foodtype ,(err, rows) => {
+            FoodTypeController.deleteFoodType(req.params.id, (err, rows) => {
                 res.json(rows);
             });
         } else {
@@ -319,5 +329,81 @@ router.post('/food/upload', upload.single('image'), (req, res, next) => {
     });
 });
 
-
+/* Discount routing */
+router.get('/discounts', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            DiscountController.getDiscounts((err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+router.delete('/discount/:id', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            DiscountController.deleteDiscount(req.params.id, (err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+router.post('/discount', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            DiscountController.createDiscount(req.body.discount, (err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+router.get('/foodnodiscounts', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            DiscountController.getFoodByDiscount((err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
 module.exports = router;
