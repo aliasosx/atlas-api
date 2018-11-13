@@ -321,6 +321,20 @@ router.delete('/foodtype/:id', (req, res) => {
         res.json('Unauthorized');
     }
 });
+router.get('/foodbycat/:id', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            foodController.getFoodByCate(req.params.id, (err, rows) => {
+                console.log(req.params.id);
+                res.json(rows);
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
 
 /* upload file */
 router.post('/food/upload', upload.single('image'), (req, res, next) => {

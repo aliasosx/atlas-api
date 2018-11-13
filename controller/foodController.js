@@ -40,10 +40,18 @@ function removeFoodById(food, callback) {
     });
 }
 
+function getFoodByCate(catid, callback) {
+    let sql = "select * from foods where food_type_id=" + catid;
+    db.CreateQueryStr(sql, function (err, rows) {
+        callback(err, rows);
+    });
+}
+
 module.exports = {
     getFoods,
     addFoods,
     updateFood,
     getFoodsById,
     removeFoodById,
+    getFoodByCate,
 }
