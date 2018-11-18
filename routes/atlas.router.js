@@ -77,10 +77,10 @@ router.post('/company', function (req, res) {
 });
 
 /* Customer module */
-router.post('/customer', function (req, res) {
+router.get('/customers/:id', function (req, res) {
     if (req.headers.authorization != null) {
         if (AuthCheck.tokenCheck(req.headers)) {
-            customerController.getCustomer(req.body.customer, function (err, customer) {
+            customerController.getCustomer(req.params.id, function (err, customer) {
                 if (customer != null) {
                     res.json(customer);
                 } else {
@@ -102,6 +102,30 @@ router.post('/customer', function (req, res) {
 
 });
 
+router.get('/customers', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (AuthCheck.tokenCheck(req.headers)) {
+            customerController.getCustomers(function (err, customer) {
+                if (customer != null) {
+                    res.json(customer);
+                } else {
+                    res.json({
+                        status: "No Record"
+                    });
+                }
+            });
+        } else {
+            res.json({
+                status: 'fail'
+            });
+        }
+    } else {
+        res.json({
+            status: "Unauthorized"
+        });
+    }
+});
+
 router.post('/customer/addnew', function (req, res) {
     if (AuthCheck.tokenCheck(req.headers)) {
         customerController.AddnewCustomer(req.body.customer, function (result) {
@@ -113,7 +137,7 @@ router.post('/customer/addnew', function (req, res) {
         });
     }
 });
-router.post('/customer/updateCustomer', function (req, res) {
+router.put('/customer/updateCustomer', function (req, res) {
     if (AuthCheck.tokenCheck(req.headers)) {
         customerController.UpdateCustomerInfo(req.body.customer, function (result) {
             res.json(result);

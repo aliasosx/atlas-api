@@ -1,8 +1,8 @@
 const db = require('../common/DB/DBServices');
 
-function getCustomer(customer, callback) {
-    if (customer.id) {
-        let sql = "select * from customers where id=" + customer.id;
+function getCustomer(id, callback) {
+    if (id) {
+        let sql = "select * from customers where id=" + id;
         db.CreateQueryStr(sql, function (err, rows) {
             callback(err, rows);
         });
@@ -25,6 +25,13 @@ function AddnewCustomer(customer, callback) {
     }
 }
 
+function getCustomers(callback) {
+    let sql = "select * from customers";
+    db.CreateQueryStr(sql, (err, rows) => {
+        callback(err, rows);
+    });
+}
+
 function UpdateCustomerInfo(customer, callback) {
     if (customer) {
         let sql = "update customers set id_card_no='" + customer.id_card_no + "', gender='" + customer.gender + "', fullname='" + customer.fullname + "',DateofBirth='" + customer.DateofBirth + "',current_address='" + customer.current_address + "', mobile='" + customer.mobile + "' , photo='" + customer.photo + "', enabled= " + customer.enabled + " where id=" + customer.id;
@@ -43,6 +50,7 @@ function UpdateCustomerInfo(customer, callback) {
 
 module.exports = {
     getCustomer,
+    getCustomers,
     AddnewCustomer,
     UpdateCustomerInfo,
 }
