@@ -11,6 +11,7 @@ var SaleController = require('../controller/saleController');
 var FoodTypeController = require('../controller/foodtypeController');
 var CurrencyCodeController = require('../controller/currencyCodeController');
 var DiscountController = require('../controller/discountController');
+var QController = require('../controller/qController');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -444,4 +445,25 @@ router.get('/foodnodiscounts', (req, res) => {
         res.json('Unauthorized');
     }
 });
+
+router.get('/q', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            QController.getQtag((err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
 module.exports = router;
