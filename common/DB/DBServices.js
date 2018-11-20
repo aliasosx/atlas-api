@@ -20,6 +20,29 @@ function CreateQueryStr(sql, callback) {
             });
         });
     } else {
+        try {
+            conn.getConnection((err, connection) => {
+
+                if (!err) {
+                    connection.query(sql, (err, rows) => {
+                        if (err) {
+                            //console.log(err);
+                            callback(err, rows);
+                        } else {
+                            console.log('Query successful');
+                            callback(err, rows);
+                        }
+                        connection.release();
+                    });
+                }
+            });
+        } catch (err) {
+            console.log("exception: " + err);
+        }
+
+
+
+        /*
         conn.getConnection(function (err, connection) {
             connection.query(sql, function (err, rows) {
                 if (err) {
@@ -44,6 +67,7 @@ function CreateQueryStr(sql, callback) {
                 }
             });
         });
+        */
 
     }
 }
