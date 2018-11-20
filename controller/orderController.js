@@ -16,10 +16,18 @@ function createOrder(order, callback) {
                     if (rows) {
                         createOrderDetail(order, orderid, (err, rows) => {
                             if (rows) {
-                                callback(rows);
+                                UpdateQtag(order.qtag, (err, rows) => {
+                                    if (err) {
+                                        callback(err, rows);
+                                    } else {
+                                        callback(err, {
+                                            status: 'success'
+                                        });
+                                    }
+                                });
                             }
                         });
-                        UpdateQtag(order.qtag);
+
                     }
                 });
 
@@ -29,22 +37,16 @@ function createOrder(order, callback) {
 }
 
 function createOrderDetail(order, orderid, callback) {
-    // make Order detail
-
     order.items.forEach(food => {
-        //console.log(food.food.price * food.quantity);
         let sql_order_detail = "insert into order_details (order_id,food_id,quantity,total) values ('" + orderid + "','" + food.food.id + "','" + food.quantity + "','" + food.food.price * food.quantity + "')";
-        //console.log(sql_order_detail);
-
         db.CreateQueryStr(sql_order_detail, (err, rows) => {
-            callback(err, rows);
-            //console.log(err);
+            if (err) {
+                console.log(err);
+                callback(err, rows);
+            }
         });
-
     });
-
     callback(null, 'OK');
-
 }
 
 function UpdateQtag(qTag, callback) {
