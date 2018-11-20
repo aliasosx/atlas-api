@@ -16,15 +16,34 @@ function createOrder(order, callback) {
                     if (rows) {
                         createOrderDetail(order, orderid, (err, rows) => {
                             if (rows) {
-                                UpdateQtag(order.qtag, (err, rows) => {
-                                    if (err) {
-                                        callback(err, rows);
-                                    } else {
-                                        callback(err, {
-                                            status: 'success'
+                                createTracking(orderid, (err, rows) => {
+                                    console.log(err);
+                                    if(rows){
+                                        updateCashRecords(orderid, order, (err, rows) =>{
+                                            if(rows) {
+                                                UpdateQtag(order.qtag, (err, rows) => {
+                                                    if (err) {
+                                                        callback(err, rows);
+                                                    } else {
+                                                        callback(err, {
+                                                            status: 'success'
+                                                        });
+                                                    }
+                                                });
+                                            }
                                         });
                                     }
                                 });
+
+
+
+                                        
+
+
+                                
+
+
+
                             }
                         });
 
@@ -54,6 +73,26 @@ function UpdateQtag(qTag, callback) {
     db.CreateQueryStr(sql, (err, rows) => {
         console.log("update Tag");
         callback(err, rows);
+    });
+}
+function createTracking(order_id, callback){
+    let sql = "insert into order_trackings (order_id,order_status,position) values ('" + order_id + "','IN PROGRESS','IN KITCHEN')";
+    db.CreateQueryStr(sql, (err, rows) => {
+        if(rows){
+            console.log('tracking update');
+            callback(err , rows);
+        }
+        
+    });
+}
+function updateCashRecords(order_id, order , callback){
+    let sql = "insert into order_cash_records (order_id,total,recieved,changeAmt) values ('" + order_id + "','" + order.grandtotal + "','" + order.recieved + "','" + order.change + "')"
+    db.CreateQueryStr(sql, (err, rows) => {
+        if(rows){
+            console.log('Cash recorded');
+            callback(err , rows);
+        }
+        
     });
 }
 
