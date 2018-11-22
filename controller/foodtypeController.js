@@ -15,7 +15,8 @@ function createFoodType(foodType, callback) {
 }
 
 function updateFoodType(foodType, callback) {
-    let sql = "update food_types set food_type='" + oodType.food_type + "',food_type_desc = '" + foodType.food_type_desc + "', food_type_desc_la = '" + foodType.food_type_desc_la + "' where id=" + foodType.id;
+    console.log(foodType);
+    let sql = "update food_types set food_type='" + foodType.food_type + "',food_type_desc = '" + foodType.food_type_desc + "', food_type_desc_la = '" + foodType.food_type_desc_la + "' where id=" + foodType.id;
     db.CreateQueryStr(sql, (err, rows) => {
         callback(err, rows);
     });

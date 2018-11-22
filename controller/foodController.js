@@ -46,6 +46,12 @@ function getFoodByCate(catid, callback) {
         callback(err, rows);
     });
 }
+function activateFood(food, callback) {
+    const sql = "update food set enabled=" + food.enabled + " where id=" + food.id;
+    db.CreateQueryStr(sql, function (err, rows) {
+        callback(err, rows);
+    });
+}
 
 module.exports = {
     getFoods,
@@ -54,4 +60,5 @@ module.exports = {
     getFoodsById,
     removeFoodById,
     getFoodByCate,
+    activateFood,
 }

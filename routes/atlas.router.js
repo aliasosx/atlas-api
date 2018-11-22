@@ -14,7 +14,7 @@ var DiscountController = require('../controller/discountController');
 var QController = require('../controller/qController');
 var KitchenController = require('../controller/kitchenController');
 var OrderController = require('../controller/orderController');
-
+var ordertrackingController = require('../controller/orderTrackingController');
 
 
 var storage = multer.diskStorage({
@@ -327,6 +327,7 @@ router.post('/foodtype', (req, res) => {
 router.put('/foodtype', (req, res) => {
     if (req.headers.authorization != null) {
         if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            console.log(req.body);
             FoodTypeController.updateFoodType(req.body.foodtype, (err, rows) => {
                 res.json(rows);
             });
@@ -514,6 +515,48 @@ router.put('/food', (req, res) => {
     if (req.headers.authorization != null) {
         if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
             foodController.updateFood(req.body.food, (err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+router.put('/foodactive', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            foodController.activateFood(req.body.food, (err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
+
+// Tracking Order 
+
+router.get('/ordertracking', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            ordertrackingController.getOrderTracks((err, rows) => {
                 if (err) {
                     res.json({
                         status: err
