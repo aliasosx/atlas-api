@@ -573,4 +573,25 @@ router.get('/ordertracking', (req, res) => {
     }
 });
 
+router.put('/ordertracking', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            console.log(req.body.ordertrack)
+            ordertrackingController.updateOrderTrackDone(req.body.ordertrack, (err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
 module.exports = router;
