@@ -11,10 +11,16 @@ function updateOrderTrackDone(orderTrack, callback) {
     console.log(orderTrack);
 
     const sql = "update order_trackings set finishtime = '" + orderTrack.finishtime + "' , done=" + orderTrack.done + " , order_status='" + orderTrack.order_status + "' , position='" + orderTrack.position + "' where order_id='" + orderTrack.order_id + "'";
+    const sql_qUpdate = "update qtags set status=1 where tag=" + orderTrack.qtag;
     db.CreateQueryStr(sql, function (err, rows) {
-        callback(err, rows);
+        if (err) {
+            callback(err, rows);
+        } else {
+            db.CreateQueryStr(sql_qUpdate, function (err, rows) {
+                callback(err, rows);
+            });
+        }
     });
-
 }
 module.exports = {
     getOrderTracks,

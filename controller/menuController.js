@@ -14,8 +14,15 @@ function getMenuByToken(user, callback) {
         callback(err, rows);
     });
 }
+function menuByUser(user, menu_link, callback) {
+    let sql = "select menus.menu_link from users , tranx_role_menu , menus where users.role_code = tranx_role_menu.role_code and menus.id = tranx_role_menu.menu_id and users.username = " + user + " and menus.menu_link='" + menu_link + "'";
+    db.CreateQueryStr(sql, function (err, rows) {
+        callback(err, rows);
+    });
+}
 
 module.exports = {
     getMenus,
     getMenuByToken,
+    menuByUser,
 }

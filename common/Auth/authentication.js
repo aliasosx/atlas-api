@@ -3,7 +3,7 @@ const DbServices = require('../DB/DBServices');
 var tokenGen = require('../../common/token_verify');
 
 function loginByEmail(user, callback) {
-    let sql = "select * from users where email='" + user.email + "'";
+    let sql = "select * from users where email='" + user.email + "' and enabled=1";
     DbServices.CreateQueryStr(sql, function (err, rows) {
         if (err) {
             callback({

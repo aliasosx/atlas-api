@@ -1,0 +1,1199 @@
+Atlas-api Server listening on port 5000
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select * from currency_code
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select orders.order_id, orders.grandtotal, orders.paid, orders.qtag,users.username,order_trackings.order_status,order_trackings.position,order_trackings.starttime,order_trackings.finishtime,order_trackings.done, customers.fullname from orders , order_trackings , users , customers where customers.customer_code = orders.customer_code and orders.order_id = order_trackings.order_id and orders.user_code = users.emp_id order by order_trackings.starttime,order_trackings.done asc
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from customers
+select * from qtags where status='1'
+{ customer:
+   { id: 7,
+     customer_code: 'C25C6212D0A1B5E256185A68F4C21C2B',
+     id_card_no: '1234567890',
+     gender: 'M',
+     fullname: 'Soulisack SAYYALINH',
+     DateofBirth: '2018-11-18T17:00:00.000Z',
+     current_address: 'Dongdok',
+     mobile: '020 55588857',
+     photo: null,
+     created_at: '2018-11-19T18:35:29.000Z',
+     updated_at: '2018-11-19T18:35:29.000Z',
+     enabled: 1 },
+  recipt_printed: 1,
+  paid: 1,
+  qtag: 4,
+  total: 99000,
+  discount: 9900,
+  tax: 6930,
+  grandtotal: 96030,
+  user_code: 'E4F43B3284BF3F9065CC5EB6A46F2514',
+  items:
+   [ { food: [Object], quantity: 1 },
+     { food: [Object], quantity: 1 },
+     { food: [Object], quantity: 1 },
+     { food: [Object], quantity: 1 },
+     { food: [Object], quantity: 1 } ],
+  recieved: '100000',
+  change: '3970' }
+select upper(md5(uuid())) as ids from dual
+B446D47F3F0779A6EF44607562E8E25D
+select upper(md5(uuid())) as ids from dual
+A8860E404D7B2088FF2682D87AEC6A55
+insert into orders (order_id,transaction_id,customer_code,recipt_printed,paid,qtag,total,discount,tax,grandtotal,user_code) values ('B446D47F3F0779A6EF44607562E8E25D','A8860E404D7B2088FF2682D87AEC6A55','C25C6212D0A1B5E256185A68F4C21C2B','1','1','4','99000','9900','6930','96030','E4F43B3284BF3F9065CC5EB6A46F2514')
+Query successful
+insert into order_details (order_id,food_id,quantity,total) values ('B446D47F3F0779A6EF44607562E8E25D','62','1','12000')
+insert into order_details (order_id,food_id,quantity,total) values ('B446D47F3F0779A6EF44607562E8E25D','52','1','21000')
+insert into order_details (order_id,food_id,quantity,total) values ('B446D47F3F0779A6EF44607562E8E25D','63','1','16000')
+insert into order_details (order_id,food_id,quantity,total) values ('B446D47F3F0779A6EF44607562E8E25D','64','1','40000')
+insert into order_details (order_id,food_id,quantity,total) values ('B446D47F3F0779A6EF44607562E8E25D','67','1','10000')
+insert into order_trackings (order_id,order_status,position) values ('B446D47F3F0779A6EF44607562E8E25D','IN PROGRESS','IN KITCHEN')
+Query successful
+Query successful
+Query successful
+Query successful
+tracking update
+null
+insert into order_cash_records (order_id,total,recieved,changeAmt) values ('B446D47F3F0779A6EF44607562E8E25D','96030','100000','3970')
+Query successful
+Query successful
+Query successful
+Cash recorded
+update qtags set status=0 where tag=4
+Query successful
+update Tag
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select orders.order_id, orders.grandtotal, orders.paid, orders.qtag,users.username,order_trackings.order_status,order_trackings.position,order_trackings.starttime,order_trackings.finishtime,order_trackings.done, customers.fullname from orders , order_trackings , users , customers where customers.customer_code = orders.customer_code and orders.order_id = order_trackings.order_id and orders.user_code = users.emp_id order by order_trackings.starttime,order_trackings.done asc
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+{ order_id: 'B446D47F3F0779A6EF44607562E8E25D',
+  done: 1,
+  order_status: 'DELIVERED',
+  position: 'FRONT COUNTER',
+  finishtime: '2018-11-24 01:48:29' }
+{ order_id: 'B446D47F3F0779A6EF44607562E8E25D',
+  done: 1,
+  order_status: 'DELIVERED',
+  position: 'FRONT COUNTER',
+  finishtime: '2018-11-24 01:48:29' }
+update order_trackings set finishtime = '2018-11-24 01:48:29' , done=1 , order_status='DELIVERED' , position='FRONT COUNTER' where order_id='B446D47F3F0779A6EF44607562E8E25D'
+Query successful
+select orders.order_id, orders.grandtotal, orders.paid, orders.qtag,users.username,order_trackings.order_status,order_trackings.position,order_trackings.starttime,order_trackings.finishtime,order_trackings.done, customers.fullname from orders , order_trackings , users , customers where customers.customer_code = orders.customer_code and orders.order_id = order_trackings.order_id and orders.user_code = users.emp_id order by order_trackings.starttime,order_trackings.done asc
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select * from currency_code
+select * from food_types
+select * from currency_code
+select * from kitchens
+{ food:
+   { food_name: 'ໄກ່ທອດກອບ',
+     food_type_id: '1',
+     cost: '10000',
+     price: '15000',
+     currcode: '418',
+     created_by: 'ADMIN',
+     photo:
+      'http://localhost:5000/images/uploads/foods/2cb0f96c970652f59310d581dc21b497.png',
+     kid: '3' } }
+{ food_name: 'ໄກ່ທອດກອບ',
+  food_type_id: '1',
+  cost: '10000',
+  price: '15000',
+  currcode: '418',
+  created_by: 'ADMIN',
+  photo:
+   'http://localhost:5000/images/uploads/foods/2cb0f96c970652f59310d581dc21b497.png',
+  kid: '3' }
+insert into foods (food_name, photo, food_type_id, cost , price, kid ,currcode, created_by ) values ('ໄກ່ທອດກອບ','http://localhost:5000/images/uploads/foods/2cb0f96c970652f59310d581dc21b497.png','1','10000','15000','3','418','ADMIN')
+Query successful
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from foods where id=69
+select * from food_types
+select * from kitchens
+update foods set food_name = 'ໄກ່ທອດກອບ', photo = 'http://localhost:5000/images/uploads/foods/2cb0f96c970652f59310d581dc21b497.png', food_type_id = '1', cost = '10000', price = '18000', currcode = '418' where id=69
+Query successful
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select * from currency_code
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from foods where food_type_id=1
+1
+select * from foods where food_type_id=2
+2
+select * from foods where food_type_id=3
+3
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select * from currency_code
+select * from food_types
+select * from currency_code
+select * from kitchens
+SyntaxError: Unexpected token " in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at createStrictSyntaxError (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/types/json.js:158:10)
+    at parse (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/types/json.js:83:15)
+    at /Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/read.js:121:18
+    at invokeCallback (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:224:16)
+    at done (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:213:7)
+    at IncomingMessage.onEnd (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:273:7)
+    at IncomingMessage.emit (events.js:182:13)
+    at endReadableNT (_stream_readable.js:1092:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select * from currency_code
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+SyntaxError: Unexpected token e in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at createStrictSyntaxError (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/types/json.js:158:10)
+    at parse (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/types/json.js:83:15)
+    at /Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/read.js:121:18
+    at invokeCallback (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:224:16)
+    at done (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:213:7)
+    at IncomingMessage.onEnd (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:273:7)
+    at IncomingMessage.emit (events.js:182:13)
+    at endReadableNT (_stream_readable.js:1092:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+SyntaxError: Unexpected token e in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at createStrictSyntaxError (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/types/json.js:158:10)
+    at parse (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/types/json.js:83:15)
+    at /Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/read.js:121:18
+    at invokeCallback (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:224:16)
+    at done (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:213:7)
+    at IncomingMessage.onEnd (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:273:7)
+    at IncomingMessage.emit (events.js:182:13)
+    at endReadableNT (_stream_readable.js:1092:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+SyntaxError: Unexpected token e in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at createStrictSyntaxError (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/types/json.js:158:10)
+    at parse (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/types/json.js:83:15)
+    at /Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/body-parser/lib/read.js:121:18
+    at invokeCallback (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:224:16)
+    at done (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:213:7)
+    at IncomingMessage.onEnd (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/raw-body/index.js:273:7)
+    at IncomingMessage.emit (events.js:182:13)
+    at endReadableNT (_stream_readable.js:1092:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from company_infos where id=1
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select * from currency_code
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select orders.order_id, orders.grandtotal, orders.paid, orders.qtag,users.username,order_trackings.order_status,order_trackings.position,order_trackings.starttime,order_trackings.finishtime,order_trackings.done, customers.fullname from orders , order_trackings , users , customers where customers.customer_code = orders.customer_code and orders.order_id = order_trackings.order_id and orders.user_code = users.emp_id order by order_trackings.starttime,order_trackings.done asc
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from foods where food_type_id=4
+4
+select * from foods where food_type_id=3
+3
+select * from foods where food_type_id=2
+2
+select * from foods where food_type_id=1
+1
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from foods where food_type_id=4
+4
+select * from foods where food_type_id=3
+3
+select * from foods where food_type_id=2
+2
+select * from foods where food_type_id=1
+1
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmai.com'
+select * from users where email='sayyalinh@gmai.com'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select * from currency_code
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select * from currency_code
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select orders.order_id, orders.grandtotal, orders.paid, orders.qtag,users.username,order_trackings.order_status,order_trackings.position,order_trackings.starttime,order_trackings.finishtime,order_trackings.done, customers.fullname from orders , order_trackings , users , customers where customers.customer_code = orders.customer_code and orders.order_id = order_trackings.order_id and orders.user_code = users.emp_id order by order_trackings.starttime,order_trackings.done asc
+select * from currency_code
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select * from currency_code
+select * from foods where id=62
+select * from food_types
+select * from kitchens
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from customers
+select * from qtags where status='1'
+{ customer:
+   { id: 7,
+     customer_code: 'C25C6212D0A1B5E256185A68F4C21C2B',
+     id_card_no: '1234567890',
+     gender: 'M',
+     fullname: 'Soulisack SAYYALINH',
+     DateofBirth: '2018-11-18T17:00:00.000Z',
+     current_address: 'Dongdok',
+     mobile: '020 55588857',
+     photo: null,
+     created_at: '2018-11-19T18:35:29.000Z',
+     updated_at: '2018-11-19T18:35:29.000Z',
+     enabled: 1 },
+  recipt_printed: 1,
+  paid: 1,
+  qtag: 5,
+  total: 203000,
+  discount: 20300,
+  tax: 14210,
+  grandtotal: 196910,
+  user_code: 'E4F43B3284BF3F9065CC5EB6A46F2514',
+  items:
+   [ { food: [Object], quantity: 1 },
+     { food: [Object], quantity: 1 },
+     { food: [Object], quantity: 2 },
+     { food: [Object], quantity: 5 } ],
+  recieved: '200000',
+  change: '3090' }
+select upper(md5(uuid())) as ids from dual
+77F65D8C47CBEFC62FD266F501A42175
+select upper(md5(uuid())) as ids from dual
+17EBD2C1AC062735A5E697491E0EFB1A
+insert into orders (order_id,transaction_id,customer_code,recipt_printed,paid,qtag,total,discount,tax,grandtotal,user_code) values ('77F65D8C47CBEFC62FD266F501A42175','17EBD2C1AC062735A5E697491E0EFB1A','C25C6212D0A1B5E256185A68F4C21C2B','1','1','5','203000','20300','14210','196910','E4F43B3284BF3F9065CC5EB6A46F2514')
+Query successful
+insert into order_details (order_id,food_id,quantity,total) values ('77F65D8C47CBEFC62FD266F501A42175','52','1','21000')
+insert into order_details (order_id,food_id,quantity,total) values ('77F65D8C47CBEFC62FD266F501A42175','62','1','12000')
+insert into order_details (order_id,food_id,quantity,total) values ('77F65D8C47CBEFC62FD266F501A42175','64','2','80000')
+insert into order_details (order_id,food_id,quantity,total) values ('77F65D8C47CBEFC62FD266F501A42175','69','5','90000')
+insert into order_trackings (order_id,order_status,position) values ('77F65D8C47CBEFC62FD266F501A42175','IN PROGRESS','IN KITCHEN')
+Query successful
+Query successful
+Query successful
+Query successful
+Query successful
+tracking update
+null
+insert into order_cash_records (order_id,total,recieved,changeAmt) values ('77F65D8C47CBEFC62FD266F501A42175','196910','200000','3090')
+Query successful
+Cash recorded
+update qtags set status=0 where tag=5
+Query successful
+update Tag
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select orders.order_id, orders.grandtotal, orders.paid, orders.qtag,users.username,order_trackings.order_status,order_trackings.position,order_trackings.starttime,order_trackings.finishtime,order_trackings.done, customers.fullname from orders , order_trackings , users , customers where customers.customer_code = orders.customer_code and orders.order_id = order_trackings.order_id and orders.user_code = users.emp_id order by order_trackings.starttime,order_trackings.done asc
+{ order_id: '77F65D8C47CBEFC62FD266F501A42175',
+  done: 1,
+  order_status: 'DELIVERED',
+  position: 'FRONT COUNTER',
+  finishtime: '2018-11-25 14:39:57' }
+{ order_id: '77F65D8C47CBEFC62FD266F501A42175',
+  done: 1,
+  order_status: 'DELIVERED',
+  position: 'FRONT COUNTER',
+  finishtime: '2018-11-25 14:39:57' }
+update order_trackings set finishtime = '2018-11-25 14:39:57' , done=1 , order_status='DELIVERED' , position='FRONT COUNTER' where order_id='77F65D8C47CBEFC62FD266F501A42175'
+Query successful
+select orders.order_id, orders.grandtotal, orders.paid, orders.qtag,users.username,order_trackings.order_status,order_trackings.position,order_trackings.starttime,order_trackings.finishtime,order_trackings.done, customers.fullname from orders , order_trackings , users , customers where customers.customer_code = orders.customer_code and orders.order_id = order_trackings.order_id and orders.user_code = users.emp_id order by order_trackings.starttime,order_trackings.done asc
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select * from currency_code
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select orders.order_id, orders.grandtotal, orders.paid, orders.qtag,users.username,order_trackings.order_status,order_trackings.position,order_trackings.starttime,order_trackings.finishtime,order_trackings.done, customers.fullname from orders , order_trackings , users , customers where customers.customer_code = orders.customer_code and orders.order_id = order_trackings.order_id and orders.user_code = users.emp_id order by order_trackings.starttime,order_trackings.done asc
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select ds.id, fd.food_name,ds.discount_percentage, ds.created_at, ds.valid_until,ds.status from discounts ds , foods fd where ds.food_id = fd.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from food_types
+select f.id,f.food_name,f.photo, f.cost, f.price, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id
+select * from company_infos where id=1
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select  mnu.id, mnu.menu_name, mnu.menu_link, mnu.menu_icon from menus mnu , users usr , roles rl , tranx_role_menu trr where usr.role_code = rl.role_code and rl.role_code = trr.role_code and mnu.id = trr.menu_id and usr.username = 'admin'
+select * from company_infos where id=1
+select * from users where email='sayyalinh@gmail.com'
+[ RowDataPacket {
+    id: 64,
+    username: 'admin',
+    email: 'sayyalinh@gmail.com',
+    password:
+     '$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',
+    enabled: 0,
+    created_at: 2018-10-06T17:10:38.000Z,
+    updated_at: 2018-10-06T17:10:38.000Z,
+    role_code: 'ADMIN',
+    emp_id: 'E4F43B3284BF3F9065CC5EB6A46F2514' } ]
+/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/mysql/lib/protocol/Parser.js:80
+        throw err; // Rethrow non-MySQL errors
+        ^
+
+Error: data and hash arguments required
+    at Object.compareSync (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/bcrypt/bcrypt.js:167:15)
+    at /Users/soulisacksayyalinh/projects/nodejs/atlas-api/common/Auth/authentication.js:23:24
+    at Query.<anonymous> (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/common/DB/DBServices.js:17:21)
+    at Query.<anonymous> (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/mysql/lib/Connection.js:502:10)
+    at Query._callback (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/mysql/lib/Connection.js:468:16)
+    at Query.Sequence.end (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/mysql/lib/protocol/sequences/Query.js:139:8)
+    at Query.EofPacket (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/mysql/lib/protocol/sequences/Query.js:123:8)
+    at Protocol._parsePacket (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/Users/soulisacksayyalinh/projects/nodejs/atlas-api/node_modules/mysql/lib/protocol/Parser.js:76:12)

@@ -65,6 +65,23 @@ router.get('/menus/usermenu', function (req, res) {
         res.json('Unauthorized');
     }
 });
+
+router.post('/menus/permit', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            let user_info = header_req.tokenVerification.decode(req.headers.authorization.replace("Bearer ", "")).payload.split("|");
+            MenuController.menuByUser(user_info[0], req.body.user, function (err, rows) {
+                res.json(rows);
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
+
 /* company module */
 router.post('/company', function (req, res) {
     if (req.headers.authorization != null) {
