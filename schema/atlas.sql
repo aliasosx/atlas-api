@@ -1,6 +1,6 @@
 -- MySQL dump 10.16  Distrib 10.3.10-MariaDB, for osx10.14 (x86_64)
 --
--- Host: localhost    Database: atlas
+-- Host: 127.0.0.1    Database: atlas
 -- ------------------------------------------------------
 -- Server version	10.3.10-MariaDB
 
@@ -287,7 +287,7 @@ CREATE TABLE `menus` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `menus_id_uindex` (`id`),
   UNIQUE KEY `menus_menu_name_uindex` (`menu_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,7 +296,7 @@ CREATE TABLE `menus` (
 
 LOCK TABLES `menus` WRITE;
 /*!40000 ALTER TABLE `menus` DISABLE KEYS */;
-INSERT INTO `menus` VALUES (1,'Home','/','home',1),(2,'Sales','sale','shopping_cart',1),(3,'Terminals','terminal','dns',1),(4,'POS','pos','credit_card',1),(5,'Food','food','fastfood',1),(6,'Reports','report','report',1),(7,'Administator','administrator','settings',1),(8,'Order Tracking','tracking','done',1);
+INSERT INTO `menus` VALUES (1,'Home','/','home',1),(2,'Sales','sale','shopping_cart',1),(3,'Terminals','terminal','dns',1),(4,'POS','pos','credit_card',1),(5,'Food','food','fastfood',1),(6,'Reports','report','report',1),(7,'Administator','administrator','settings',1),(8,'Order Tracking','tracking','done',1),(9,'Users management','users','verified_user',1);
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -537,7 +537,7 @@ CREATE TABLE `tranx_role_menu` (
   `menu_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tranx_role_menu_id_uindex` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -546,7 +546,7 @@ CREATE TABLE `tranx_role_menu` (
 
 LOCK TABLES `tranx_role_menu` WRITE;
 /*!40000 ALTER TABLE `tranx_role_menu` DISABLE KEYS */;
-INSERT INTO `tranx_role_menu` VALUES (1,'ADMIN',1),(4,'ADMIN',2),(5,'ADMIN',3),(6,'ADMIN',4),(7,'ADMIN',5),(8,'ADMIN',6),(9,'ADMIN',7),(10,'ADMIN',8),(11,'POS',4);
+INSERT INTO `tranx_role_menu` VALUES (1,'ADMIN',1),(4,'ADMIN',2),(5,'ADMIN',3),(6,'ADMIN',4),(7,'ADMIN',5),(8,'ADMIN',6),(9,'ADMIN',7),(10,'ADMIN',8),(12,'ADMIN',9);
 /*!40000 ALTER TABLE `tranx_role_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -560,7 +560,13 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
+  `gender` char(1) DEFAULT NULL,
+  `fullname` varchar(500) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
+  `photo` varchar(255) DEFAULT 'http://localhost:5000/images/uploads/users/21104.svg',
+  `dateofbirth` date DEFAULT NULL,
+  `current_address` varchar(500) DEFAULT NULL,
+  `mobile` varchar(50) DEFAULT NULL,
   `password` varchar(70) NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` datetime DEFAULT current_timestamp(),
@@ -572,7 +578,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_username_uindex` (`username`),
   UNIQUE KEY `users_email_uindex` (`email`),
   UNIQUE KEY `users_emp_id_uindex` (`emp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -581,7 +587,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (64,'admin','sayyalinh@gmail.com','$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',1,'2018-10-07 00:10:38','2018-10-07 00:10:38','ADMIN','E4F43B3284BF3F9065CC5EB6A46F2514'),(66,'pos','pos@letterp.com','$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',1,'2018-11-25 23:20:53','2018-11-25 23:20:53','POS','13C9F3BFCA140A8EE9855BF3123D9160');
+INSERT INTO `users` VALUES (64,'admin','M','Soulisack SAYYALINH','sayyalinh@gmail.com','http://localhost:5000/images/uploads/users/21104.svg','2018-11-05','dongdok','02055588857','$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',1,'2018-10-07 00:10:38','2018-10-07 00:10:38','ADMIN','E4F43B3284BF3F9065CC5EB6A46F2514'),(68,'pathana','F','Pathana THIENKHUN','pathana@gmail.com','http://localhost:5000/images/uploads/users/21104.svg','2018-11-06','dongdok','02056789333','$2b$10$AYlGbhNUtNZk7Q1Ygp.FBu6li3s5N/xpb53Lq04tSDYRgnbCwC5IG',1,'2018-11-27 23:17:03','2018-11-27 23:17:03','ADMIN','27B24F36B77049351B34F741435B6ABF');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -594,4 +600,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-26 17:57:50
+-- Dump completed on 2018-11-28  1:14:44

@@ -26,8 +26,21 @@ var storage = multer.diskStorage({
     }
 });
 
+var storage_public = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/images/uploads/users')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+
 var upload = multer({
     storage: storage
+});
+
+var upload_public = multer({
+    storage: storage_public
 });
 
 var tokenVerification = require('../common/Auth/tokenCheck');
@@ -387,6 +400,12 @@ router.get('/foodbycat/:id', (req, res) => {
 router.post('/food/upload', upload.single('image'), (req, res, next) => {
     res.json({
         'message': 'File uploaded successfully'
+    });
+});
+
+router.post('/users/upload', upload.single('image'), (req, res, next) => {
+    res.json({
+        'message': 'User file uploaded successfully'
     });
 });
 
