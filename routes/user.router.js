@@ -39,7 +39,26 @@ router.post('/add', function (req, res) {
                     res.json(err);
                 } else {
                     res.send({
-                        status: "User add success "
+                        status: "success"
+                    });
+                }
+            });
+        } else {
+            res.send('Unauthorized');
+        }
+    } else {
+        res.send('Unauthorized');
+    }
+});
+router.delete('/delete/:id', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            UserController.deleteUser(req.params.id, function (err) {
+                if (err.code) {
+                    res.json(err);
+                } else {
+                    res.send({
+                        status: "success"
                     });
                 }
             });

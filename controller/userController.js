@@ -59,10 +59,17 @@ function getUserById(id, callback) {
 
 function addNew(user, callback) {
     bcrypt.hash(user.password, saltRounds, function (err, hash) {
-        let sql = "insert into users (username,email,password) values ('" + user.username + "' , '" + user.email + "','" + hash + "')";
+        let sql = "insert into users (username,email,password,gender,fullname,photo,dateofbirth,current_address,mobile,role_code) values ('" + user.username + "' , '" + user.email + "','" + hash + "', '" + user.gender + "', '" + user.fullname + "', '" + user.photo + "','" + user.dateofbirth + "','" + user.current_address + "','" + user.mobile + "','" + user.role_code + "')";
         QueryStr(sql, function (err, result) {
             callback(err, result);
         });
+    });
+}
+
+function deleteUser(id, callback) {
+    let sql = "delete from users where id=" + id;
+    QueryStr(sql, function (err, result) {
+        callback(err, result);
     });
 }
 
@@ -71,5 +78,6 @@ module.exports = {
     getUsers,
     getUserById,
     addNew,
+    deleteUser,
 
 }

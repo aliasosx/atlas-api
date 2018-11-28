@@ -15,7 +15,7 @@ var QController = require('../controller/qController');
 var KitchenController = require('../controller/kitchenController');
 var OrderController = require('../controller/orderController');
 var ordertrackingController = require('../controller/orderTrackingController');
-
+var RoleController = require('../controller/roleController');
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -26,7 +26,7 @@ var storage = multer.diskStorage({
     }
 });
 
-var storage_public = multer.diskStorage({
+var storage_user_photo = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'public/images/uploads/users')
     },
@@ -39,8 +39,8 @@ var upload = multer({
     storage: storage
 });
 
-var upload_public = multer({
-    storage: storage_public
+var upload_user_photo = multer({
+    storage: storage_user_photo
 });
 
 var tokenVerification = require('../common/Auth/tokenCheck');
@@ -403,11 +403,12 @@ router.post('/food/upload', upload.single('image'), (req, res, next) => {
     });
 });
 
-router.post('/users/upload', upload.single('image'), (req, res, next) => {
+router.post('/users/upload', upload_user_photo.single('image'), (req, res, next) => {
     res.json({
-        'message': 'User file uploaded successfully'
+        'status': 'success'
     });
 });
+
 
 /* Discount routing */
 router.get('/discounts', (req, res) => {
@@ -629,5 +630,26 @@ router.put('/ordertracking', (req, res) => {
         res.json('Unauthorized');
     }
 });
+// Roles 
 
+router.get('/roles', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            console.log(req.body.ordertrack)
+            RoleController.getRoles((err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
 module.exports = router;
