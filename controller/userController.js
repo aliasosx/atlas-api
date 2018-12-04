@@ -56,6 +56,12 @@ function getUserById(id, callback) {
         callback(result);
     });
 }
+function getUserByUsername(user, callback) {
+    let sql = "select * from users where username='" + user.user_name + "'";
+    QueryStr(sql, function (result) {
+        callback(result);
+    });
+}
 
 function addNew(user, callback) {
     bcrypt.hash(user.password, saltRounds, function (err, hash) {
@@ -79,5 +85,6 @@ module.exports = {
     getUserById,
     addNew,
     deleteUser,
+    getUserByUsername,
 
 }

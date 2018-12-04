@@ -70,4 +70,19 @@ router.delete('/delete/:id', (req, res) => {
     }
 });
 
+router.post('/usersbyusername', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            UserController.getUserByUsername(req.body.user, function (result) {
+
+                res.json(result);
+
+            });
+        } else {
+            res.send('Unauthorized');
+        }
+    } else {
+        res.send('Unauthorized');
+    }
+});
 module.exports = router;

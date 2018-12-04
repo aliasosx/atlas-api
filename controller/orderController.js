@@ -11,16 +11,16 @@ function createOrder(order, callback) {
             orderid = orderid;
             getOrderId(transaction_id => {
                 transaction_id = transaction_id;
-                let sql_order = "insert into orders (order_id,transaction_id,customer_code,recipt_printed,paid,qtag,total,discount,tax,grandtotal,user_code) values ('" + orderid + "','" + transaction_id + "','" + order.customer.customer_code + "','" + order.recipt_printed + "','" + order.paid + "','" + order.qtag + "','" + order.total + "','" + order.discount + "','" + order.tax + "','" + order.grandtotal + "','" + order.user_code + "')";
+                let sql_order = "insert into orders (order_id,transaction_id,customer_code,recipt_printed,paid,qtag,total,discount,tax,grandtotal,user_code, terminal_id) values ('" + orderid + "','" + transaction_id + "','" + order.customer.customer_code + "','" + order.recipt_printed + "','" + order.paid + "','" + order.qtag + "','" + order.total + "','" + order.discount + "','" + order.tax + "','" + order.grandtotal + "','" + order.user_code + "','" + order.terminal_id + "')";
                 db.CreateQueryStr(sql_order, (err, rows) => {
                     if (rows) {
                         createOrderDetail(order, orderid, (err, rows) => {
                             if (rows) {
-                                createTracking(orderid, (err, rows) => {
+                                createTracking(orderid, order.user_code, (err, rows) => {
                                     console.log(err);
-                                    if(rows){
-                                        updateCashRecords(orderid, order, (err, rows) =>{
-                                            if(rows) {
+                                    if (rows) {
+                                        updateCashRecords(orderid, order, (err, rows) => {
+                                            if (rows) {
                                                 UpdateQtag(order.qtag, (err, rows) => {
                                                     if (err) {
                                                         callback(err, rows);
@@ -34,16 +34,6 @@ function createOrder(order, callback) {
                                         });
                                     }
                                 });
-
-
-
-                                        
-
-
-                                
-
-
-
                             }
                         });
 
@@ -75,24 +65,24 @@ function UpdateQtag(qTag, callback) {
         callback(err, rows);
     });
 }
-function createTracking(order_id, callback){
-    let sql = "insert into order_trackings (order_id,order_status,position) values ('" + order_id + "','IN PROGRESS','IN KITCHEN')";
+function createTracking(order_id, user_code, callback) {
+    let sql = "insert into order_trackings (order_id,order_status,position,emp_id) values ('" + order_id + "','IN PROGRESS','IN KITCHEN','" + user_code + "')";
     db.CreateQueryStr(sql, (err, rows) => {
-        if(rows){
+        if (rows) {
             console.log('tracking update');
-            callback(err , rows);
+            callback(err, rows);
         }
-        
+
     });
 }
-function updateCashRecords(order_id, order , callback){
+function updateCashRecords(order_id, order, callback) {
     let sql = "insert into order_cash_records (order_id,total,recieved,changeAmt) values ('" + order_id + "','" + order.grandtotal + "','" + order.recieved + "','" + order.change + "')"
     db.CreateQueryStr(sql, (err, rows) => {
-        if(rows){
+        if (rows) {
             console.log('Cash recorded');
-            callback(err , rows);
+            callback(err, rows);
         }
-        
+
     });
 }
 
