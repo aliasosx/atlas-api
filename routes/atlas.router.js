@@ -630,6 +630,47 @@ router.put('/ordertracking', (req, res) => {
         res.json('Unauthorized');
     }
 });
+router.get('/ordertrackingpending', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            console.log(req.body.ordertrack)
+            ordertrackingController.getOrderTrackingPending((err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
+router.get('/orderbyid/:id', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            console.log(req.body.ordertrack)
+            OrderController.getOrderById(req.params.id, (err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
 // Roles 
 
 router.get('/roles', (req, res) => {

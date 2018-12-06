@@ -93,7 +93,15 @@ function getOrderId(callback) {
         callback(orderid[0].ids);
     });
 }
+function getOrderById(order_id, callback) {
+    let sql = "select * from order_details , foods where order_details.food_id = foods.id  and order_details.order_id='" + order_id + "'";
+    db.CreateQueryStr(sql, function (err, rows) {
+        console.log(rows);
+        callback(err, rows);
+    });
+}
 
 module.exports = {
     createOrder,
+    getOrderById,
 }

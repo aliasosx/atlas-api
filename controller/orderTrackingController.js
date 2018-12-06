@@ -22,7 +22,14 @@ function updateOrderTrackDone(orderTrack, callback) {
         }
     });
 }
+function getOrderTrackingPending(callback) {
+    let sql = "select  * from order_trackings , order_details, orders , foods where orders.order_id = order_trackings.order_id and orders.order_id = order_details.order_id and order_details.food_id = foods.id and done=0";
+    db.CreateQueryStr(sql, function (err, rows) {
+        callback(err, rows);
+    });
+}
 module.exports = {
     getOrderTracks,
     updateOrderTrackDone,
+    getOrderTrackingPending,
 }
