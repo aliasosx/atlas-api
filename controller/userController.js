@@ -78,6 +78,13 @@ function deleteUser(id, callback) {
         callback(err, result);
     });
 }
+function auditUser(user, callback) {
+    console.log(user);
+    let sql = "insert into user_audits (emp_id,activities) values ('" + user.emp_id + "','" + user.activity + "')";
+    QueryStr(sql, (err, result) => {
+        callback(err, result);
+    });
+}
 
 module.exports = {
     CreateUser,
@@ -86,5 +93,6 @@ module.exports = {
     addNew,
     deleteUser,
     getUserByUsername,
+    auditUser,
 
 }

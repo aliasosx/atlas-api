@@ -85,4 +85,17 @@ router.post('/usersbyusername', (req, res) => {
         res.send('Unauthorized');
     }
 });
+router.post('/audit', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            UserController.auditUser(req.body.user, function (result) {
+                res.json(result);
+            });
+        } else {
+            res.send('Unauthorized');
+        }
+    } else {
+        res.send('Unauthorized');
+    }
+});
 module.exports = router;
