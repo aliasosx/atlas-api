@@ -239,7 +239,7 @@ CREATE TABLE `foods` (
 
 LOCK TABLES `foods` WRITE;
 /*!40000 ALTER TABLE `foods` DISABLE KEYS */;
-INSERT INTO `foods` (`id`, `food_name`, `photo`, `food_type_id`, `cost`, `price`, `currcode`, `enabled`, `created_at`, `updated_at`, `created_by`, `kid`) VALUES (62,'ຊາໄຂ່ມຸກ','http://localhost:5000/images/uploads/foods/26239959_728048127384692_7141641406092480732_o.jpg',2,8000,12000,'418',1,'2018-11-09 00:08:45','2018-11-09 00:08:45','ADMIN',4),(63,'ກຸ້ງທອດກອບ','http://localhost:5000/images/uploads/foods/fried-shrimp-png.png',1,10000,16000,'418',1,'2018-11-17 00:56:50','2018-11-17 00:56:50','ADMIN',3),(64,'ບິງຊູ','http://localhost:5000/images/uploads/foods/kisspng-kakigri-sulbing-harajuku-sorbic-sendai-strawberr-5b180e60944319.2537494815283032006073.png',3,30000,40000,'418',1,'2018-11-17 22:20:12','2018-11-17 22:20:12','ADMIN',4),(67,'ຕຳໝາກຮຸ່ງ','http://localhost:5000/images/uploads/foods/index.jpg',1,8000,10000,'418',1,'2018-11-20 09:48:49','2018-11-20 09:48:49','ADMIN',3),(68,'ເຄັກ','http://localhost:5000/images/uploads/foods/caramello-cake-105070-1.jpeg',3,30000,80000,'418',1,'2018-11-22 12:40:30','2018-11-22 12:40:30','ADMIN',4),(69,'ໄກ່ທອດກອບ','http://localhost:5000/images/uploads/foods/2cb0f96c970652f59310d581dc21b497.png',1,10000,18000,'418',1,'2018-11-24 01:49:53','2018-11-24 01:49:53','ADMIN',3),(77,'ໄກ່ທອດ','http://letterp-api.local:5000/images/uploads/foods/0146481.jpg',1,10000,15000,'418',1,'2018-12-06 01:04:11','2018-12-06 01:04:11','ADMIN',3);
+INSERT INTO `foods` (`id`, `food_name`, `photo`, `food_type_id`, `cost`, `price`, `currcode`, `enabled`, `created_at`, `updated_at`, `created_by`, `kid`) VALUES (62,'ຊາໄຂ່ມຸກ','26239959_728048127384692_7141641406092480732_o.jpg',2,8000,12000,'418',1,'2018-11-09 00:08:45','2018-11-09 00:08:45','ADMIN',4),(63,'ກຸ້ງທອດກອບ','fried-shrimp-png.png',1,10000,16000,'418',1,'2018-11-17 00:56:50','2018-11-17 00:56:50','ADMIN',3),(64,'ບິງຊູ','kisspng-kakigri-sulbing-harajuku-sorbic-sendai-strawberr-5b180e60944319.2537494815283032006073.png',3,30000,40000,'418',1,'2018-11-17 22:20:12','2018-11-17 22:20:12','ADMIN',4),(67,'ຕຳໝາກຮຸ່ງ','index.jpg',1,8000,10000,'418',1,'2018-11-20 09:48:49','2018-11-20 09:48:49','ADMIN',3),(68,'ເຄັກ','caramello-cake-105070-1.jpeg',3,30000,80000,'418',1,'2018-11-22 12:40:30','2018-11-22 12:40:30','ADMIN',4),(69,'ໄກ່ທອດກອບ','2cb0f96c970652f59310d581dc21b497.png',1,10000,18000,'418',1,'2018-11-24 01:49:53','2018-11-24 01:49:53','ADMIN',3),(77,'ໄກ່ທອດ','0146481.jpg',1,10000,15000,'418',1,'2018-12-06 01:04:11','2018-12-06 01:04:11','ADMIN',3);
 /*!40000 ALTER TABLE `foods` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -657,4 +657,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-08 11:07:03
+-- Dump completed on 2018-12-08 13:13:03
