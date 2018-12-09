@@ -72,6 +72,16 @@ function addNew(user, callback) {
     });
 }
 
+function changeUserPasswordByEmpId(user, callback) {
+    bcrypt.hash(user.password, saltRounds, function (err, hash) {
+        //let sql = "insert into users (username,email,password,gender,fullname,photo,dateofbirth,current_address,mobile,role_code) values ('" + user.username + "' , '" + user.email + "','" + hash + "', '" + user.gender + "', '" + user.fullname + "', '" + user.photo + "','" + user.dateofbirth + "','" + user.current_address + "','" + user.mobile + "','" + user.role_code + "')";
+        let sql = "update users set password='" + hash + "', first_login = 0 where emp_id='" + user.emp_id + "'";
+        QueryStr(sql, function (err, result) {
+            callback(err, result);
+        });
+    });
+}
+
 function deleteUser(id, callback) {
     let sql = "delete from users where id=" + id;
     QueryStr(sql, function (err, result) {
@@ -94,5 +104,6 @@ module.exports = {
     deleteUser,
     getUserByUsername,
     auditUser,
+    changeUserPasswordByEmpId,
 
 }

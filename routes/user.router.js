@@ -50,6 +50,25 @@ router.post('/add', function (req, res) {
         res.send('Unauthorized');
     }
 });
+router.post('/changePasswordUserByEmpId', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            UserController.changeUserPasswordByEmpId(req.body.user, function (err) {
+                if (err.code) {
+                    res.json(err);
+                } else {
+                    res.send({
+                        status: "success"
+                    });
+                }
+            });
+        } else {
+            res.send('Unauthorized');
+        }
+    } else {
+        res.send('Unauthorized');
+    }
+});
 router.delete('/delete/:id', (req, res) => {
     if (req.headers.authorization != null) {
         if (tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
@@ -86,6 +105,7 @@ router.post('/usersbyusername', (req, res) => {
     }
 });
 router.post('/audit', (req, res) => {
+    /*
     if (req.headers.authorization != null) {
         if (tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
             UserController.auditUser(req.body.user, function (result) {
@@ -97,5 +117,10 @@ router.post('/audit', (req, res) => {
     } else {
         res.send('Unauthorized');
     }
+    */
+    console.log('User audit processig ' + req.body.user);
+    UserController.auditUser(req.body.user, (result) => {
+        res.json(result);
+    })
 });
 module.exports = router;
