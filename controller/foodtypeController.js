@@ -6,6 +6,12 @@ function getFoodType(callback) {
         callback(err, rows);
     });
 }
+function getFoodTypeByName(foodType, callback) {
+    let sql = "select * from food_types where food_type_desc_la='" + foodType.food_type_desc_la + "'";
+    db.CreateQueryStr(sql, function (err, rows) {
+        callback(err, rows);
+    });
+}
 
 function createFoodType(foodType, callback) {
     let sql = "insert into food_types (food_type, food_type_desc,food_type_desc_la) values ('" + foodType.food_type + "','" + foodType.food_type_desc + "', '" + foodType.food_type_desc_la + "')";
@@ -34,5 +40,6 @@ module.exports = {
     createFoodType,
     updateFoodType,
     deleteFoodType,
+    getFoodTypeByName,
 
 }
