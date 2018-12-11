@@ -46,8 +46,9 @@ function createOrder(order, callback) {
 }
 
 function createOrderDetail(order, orderid, callback) {
+    console.log(order);
     order.items.forEach(food => {
-        let sql_order_detail = "insert into order_details (order_id,food_id,quantity,total) values ('" + orderid + "','" + food.food.id + "','" + food.quantity + "','" + food.food.price * food.quantity + "')";
+        let sql_order_detail = "insert into order_details (order_id,food_id,quantity,total,note) values ('" + orderid + "','" + food.food.id + "','" + food.quantity + "','" + food.food.price * food.quantity + "','" + food.note + "')";
         db.CreateQueryStr(sql_order_detail, (err, rows) => {
             if (err) {
                 console.log(err);
