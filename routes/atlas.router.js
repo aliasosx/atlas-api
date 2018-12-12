@@ -644,6 +644,7 @@ router.put('/ordertracking', (req, res) => {
     }
 });
 router.get('/ordertrackingpending', (req, res) => {
+    /*
     if (req.headers.authorization != null) {
         if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
             console.log(req.body.ordertrack)
@@ -662,6 +663,17 @@ router.get('/ordertrackingpending', (req, res) => {
     } else {
         res.json('Unauthorized');
     }
+    */
+    console.log(req.body.ordertrack)
+    ordertrackingController.getOrderTrackingPending((err, rows) => {
+        if (err) {
+            res.json({
+                status: err
+            });
+        } else {
+            res.json(rows);
+        }
+    });
 });
 
 router.get('/orderbyid/:id', (req, res) => {
