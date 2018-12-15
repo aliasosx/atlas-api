@@ -301,6 +301,21 @@ router.get('/foodtypes', function (req, res) {
         res.json('Unauthorized');
     }
 });
+
+router.get('/foodtypehasfood', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            FoodTypeController.getFoodTypeHasFood(function (err, rows) {
+                res.json(rows);
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
 router.post('/foodtypebyname', (req, res) => {
     if (req.headers.authorization != null) {
         if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {

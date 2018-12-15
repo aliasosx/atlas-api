@@ -34,6 +34,12 @@ function deleteFoodType(id, callback) {
         callback(err, rows);
     });
 }
+function getFoodTypeHasFood(callback){
+    let sql = "select * from food_types where id in (select distinct(food_type_id) from foods)";
+    db.CreateQueryStr(sql, (err, rows) => {
+        callback(err, rows);
+    });
+}
 
 module.exports = {
     getFoodType,
@@ -41,5 +47,6 @@ module.exports = {
     updateFoodType,
     deleteFoodType,
     getFoodTypeByName,
+    getFoodTypeHasFood,
 
 }
