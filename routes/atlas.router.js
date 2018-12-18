@@ -776,4 +776,23 @@ router.post('/foodsubtype', (req, res) => {
         res.json('Unauthorized');
     }
 });
+router.get('/foodBySubtype/:id' , (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            FoodSubTypeController.getFoodBySubtype(req.params.id, (err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json({ status: 'success' });
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
 module.exports = router;

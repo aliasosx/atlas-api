@@ -13,8 +13,14 @@ function addnew(foodSubtype, callback) {
         callback(err, rows);
     });
 }
-
+function getFoodBySubtype(food_id,callback){
+    let sql = "select * from foods, food_subtypes , food_subtype_tranx where food_subtype_tranx.food_id = foods.id and food_subtype_tranx.food_subtype_id = food_subtypes.id where foods.id =" + food_id;
+    db.CreateQueryStr(sql, function (err, rows) {
+        callback(err, rows);
+    });
+}
 module.exports = {
     getSubtypes,
     addnew,
+    getFoodBySubtype,
 }
