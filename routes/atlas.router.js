@@ -16,6 +16,8 @@ var KitchenController = require('../controller/kitchenController');
 var OrderController = require('../controller/orderController');
 var ordertrackingController = require('../controller/orderTrackingController');
 var RoleController = require('../controller/roleController');
+var FoodSubTypeController = require('../controller/subtypeController');
+
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -724,6 +726,47 @@ router.get('/roles', (req, res) => {
                     });
                 } else {
                     res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
+//Food Subtype
+router.get('/foodsubtypes', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            FoodSubTypeController.getSubtypes((err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json(rows);
+                }
+            });
+        } else {
+            res.json('Unauthorized');
+        }
+    } else {
+        res.json('Unauthorized');
+    }
+});
+
+router.post('/foodsubtype', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
+            FoodSubTypeController.addnew(req.body.foodSubtype, (err, rows) => {
+                if (err) {
+                    res.json({
+                        status: err
+                    });
+                } else {
+                    res.json({ status: 'success' });
                 }
             });
         } else {
