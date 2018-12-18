@@ -2,6 +2,8 @@ var app = require('./common/app');
 var userRouter = require('./routes/user.router');
 var loginRouter = require('./routes/login.router');
 const crypto = require('crypto');
+var reportRouter = require('./routes/report');
+
 var fs = require('fs');
 var https = require('https');
 
@@ -16,7 +18,7 @@ app.use(cors());
 app.use('/api/v1/login', loginRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1', routerAtlas);
-
+app.use('/api/v1/reports', reportRouter);
 /*
 var server = app.listen(port, function () {
     console.log('Atlas-api Server listening on port ' + port);
