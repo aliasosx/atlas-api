@@ -209,6 +209,28 @@ router.get('/foods', (req, res) => {
     }
 });
 
+router.get('/foodlists', (req, res) => {
+    if (req.headers.authorization != null) {
+        if (AuthCheck.tokenCheck(req.headers)) {
+            foodController.getAllFoodList(function (err, foods) {
+                if (!err) {
+                    res.json(foods);
+                } else {
+                    res.json(err);
+                }
+            });
+        } else {
+            res.json({
+                status: "Unauthorized"
+            })
+        }
+    } else {
+        res.json({
+            status: "Unauthorized"
+        })
+    }
+});
+
 router.get('/food/:id', (req, res) => {
     if (req.headers.authorization != null) {
         if (AuthCheck.tokenCheck(req.headers)) {
