@@ -779,7 +779,7 @@ router.post('/foodsubtype', (req, res) => {
 router.get('/foodBySubtype/:id', (req, res) => {
     if (req.headers.authorization != null) {
         if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
-            FoodSubTypeController.getFoodBySubtype(req.params.id, (err, rows) => {
+            foodController.getSubFoodByFoodId(req.params.id, (err, rows) => {
                 if (err) {
                     res.json({
                         status: err
@@ -799,7 +799,7 @@ router.get('/foodBySubtype/:id', (req, res) => {
 router.get('/getFoodSubtypeByFoodId/:id', (req, res) => {
     if (req.headers.authorization != null) {
         if (header_req.tokenVerification.verifyToken(req.headers.authorization.replace("Bearer ", ""))) {
-            FoodSubTypeController.getFoodSubtypeByFoodId(req.params.id, (err, rows) => {
+            foodController.getSubFoodByFoodId(req.params.id, (err, rows) => {
                 if (err) {
                     res.json({
                         status: err
