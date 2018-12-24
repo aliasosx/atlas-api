@@ -15,9 +15,16 @@ function getAllFoodList(callback) {
     });
 }
 
+function getAllMasterFoods(callback) {
+    let sql = "select f.id,f.food_name,f.photo, f.enabled, ft.food_type_desc_la, cc.curr_name_la,ks.kitchen_name,ks.kitchen_code, f.enabled_subtype, f.cost, f.price from foods f , food_types ft , currency_code cc , kitchens ks where f.food_type_id = ft.id and cc.curr_code = f.currcode and f.kid = ks.id and f.enabled_subtype = 1";
+    db.CreateQueryStr(sql, function (err, rows) {
+        callback(err, rows);
+    });
+}
+
 function addFoods(food, callback) {
     console.log(food);
-    let sql = "insert into foods (food_name, photo, food_type_id, cost , price, kid ,currcode, created_by ) values ('" + food.food_name + "','" + food.photo + "','" + food.food_type_id + "','" + food.cost + "','" + food.price + "','" + food.kid + "','" + food.currcode + "','" + food.created_by + "')";
+    let sql = "insert into foods (food_name, photo, food_type_id, cost , price, kid ,currcode, created_by, master_food_id, enabled_subtype  ) values ('" + food.food_name + "','" + food.photo + "','" + food.food_type_id + "','" + food.cost + "','" + food.price + "','" + food.kid + "','" + food.currcode + "','" + food.created_by + "','" + food.master_food_id + "','" + food.enabled_subtype + "')";
     db.CreateQueryStr(sql, function (err, rows) {
         if (err) {
             callback(err, rows);
@@ -78,4 +85,5 @@ module.exports = {
     activateFood,
     getSubFoodByFoodId,
     getAllFoodList,
+    getAllMasterFoods,
 }
